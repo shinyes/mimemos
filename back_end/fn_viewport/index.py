@@ -51,4 +51,4 @@ def delete_memo():
     data = request.json  # 将 POST 请求体中的数据转换为字典
     if token_is_ok(token):
         memo_id = data['memo_id']
-        return 'memo删除成功', 200 if delete_memo_by_id(memo_id) else "memo删除失败", 210
+        return ('memo删除成功'.encode('utf-8'), 200) if delete_memo_by_id(memo_id) else ("memo删除失败", 210)

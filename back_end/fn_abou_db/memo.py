@@ -55,7 +55,7 @@ def delete_memo_by_id(memo_id: int):
     with sqlite3.connect(load_config.main_data_path) as conn:
         sql = '''DELETE FROM memos WHERE id = ?'''
         cur = conn.cursor()
-        cur.execute(sql)
+        cur.execute(sql, (memo_id, ))
         rows_affected = cur.rowcount
         conn.commit()
     if rows_affected == 1:

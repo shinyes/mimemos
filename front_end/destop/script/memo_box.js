@@ -33,16 +33,6 @@ function gen_memo_box_tmpl() {
     let memo_del_option = document.createElement('div')
     memo_del_option.className = 'memo-del-option'
     memo_del_option.textContent = '删除'
-
-    // 删除没有生效
-    memo_del_option.addEventListener('click', () => {
-        console.log("...")
-        let memo_box = memo_del_option.parentNode.parentNode.parentNode.parentNode
-        let memo_id = memo_box.getAttribute('data-memo-id')
-        delete_memo(memo_id)
-        memo_box.parentNode.removeChild(memo_box)
-    })
-
     memo_options.appendChild(memo_del_option)
 
     // memo-box 的主要内容
@@ -55,8 +45,20 @@ function gen_memo_box_tmpl() {
 // memo-box 的模板
 let memo_box_tmpl = gen_memo_box_tmpl()
 
+function add_del_memo_listener(memo_box) {
+    let memo_del_option = memo_box.querySelector('div.memo-del-option')
+    memo_del_option.addEventListener('click', () => {
+        console.log("...")
+        let memo_box = memo_del_option.parentNode.parentNode.parentNode.parentNode
+        let memo_id = memo_box.getAttribute('data-memo-id')
+        delete_memo(memo_id)
+        memo_box.parentNode.removeChild(memo_box)
+    })
+}
+
 export function gen_memo_box(content, created_ts, memo_id) {
     let new_memo_box = memo_box_tmpl.cloneNode(true) // true 表示复制整个元素，包括其子元素
+    add_del_memo_listener(new_memo_box)
     let content_p = new_memo_box.querySelector("p.content")
     content_p.textContent = content;
 
