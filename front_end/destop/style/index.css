@@ -1,0 +1,176 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* 如果想要更加平滑的改变，那么就要考虑使用 js 代码来进行计算了，
+   手机上倒是无所谓，一直很小，但是电脑上根据使用场景不同，窗口情况无穷多*/
+div.top-container {
+    display: flex;
+    justify-content: center;
+
+    /* 比50em宽时 */
+    @media (min-width: 50em) {
+        width: 80%;
+        height: 90%;
+    }
+
+    /* 比50em窄时 */
+    @media (max-width: 50em) {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+div.left-contianer {
+
+    /* 比50em宽时 */
+    @media (min-width: 50em) {
+        width: 15%;
+        border-width: 0.13em;
+        border-right: 0;
+        border-style: solid;
+        border-radius: 1em;
+    }
+
+    /* 比50em窄时 */
+    @media (max-width: 50em) {
+        display: none;
+    }
+}
+
+div.mid-container {
+
+    /* 比50em宽时 */
+    @media (min-width: 50em) {
+        width: 50%;
+        border-width: 0.13em;
+        border-style: solid;
+        border-radius: 1em;
+    }
+
+    /* 比50em窄时 */
+    @media (max-width: 50em) {
+        width: 100%;
+    }
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+div.top-bar {
+
+    /* 比50em宽时 */
+    @media (min-width: 50em) {
+        visibility: hidden;
+        height: 0%;
+    }
+
+    /* 比50em窄时 */
+    @media (max-width: 50em) {
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+        height: 10%;
+
+        border-width: 0.13em;
+        border-style: solid;
+        border-radius: 1em;
+    }
+}
+
+div.exhibit-area {
+
+    /* 比50em宽时 */
+    @media (min-width: 50em) {
+        margin: 1%;
+        height: 75%;
+    }
+
+    /* 比50em窄时 */
+    @media (max-width: 50em) {
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+        height: 75%;
+    }
+
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+
+    overflow-y: auto;
+}
+
+/* 隐藏滚动条 */
+div.exhibit-area::-webkit-scrollbar {
+    display: none;
+}
+
+div.editor-area {
+    box-sizing: border-box;
+
+    /* 比50em宽时 */
+    @media (min-width: 50em) {
+        margin: 1%;
+        height: 25%;
+        width: 97.5%;
+        border-width: 0.13em;
+        border-style: solid;
+        border-radius: 1em;
+    }
+
+    /* 比50em窄时 */
+    @media (max-width: 50em) {
+        margin: 1%;
+        margin-bottom: 0;
+        margin-top: 0;
+        height: 15%;
+
+        border-width: 0.13em;
+        border-style: solid;
+        border-radius: 1em;
+    }
+
+    padding: 3%;
+    display: flex;
+}
+
+div.input-container {
+    width: 65%;
+    height: 100%;
+}
+
+
+textarea.input-memo {
+    padding: 3%;
+    height: 65%;
+    width: 100%;
+    resize: none;
+    font-size: 1.1em;
+}
+
+div.input-tools {
+    margin-top: 5%;
+    height: 25%;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+}
+
+div.input-resource {
+    background-color: aliceblue;
+    margin-left: 4%;
+    width: 31%;
+    height: 100%;
+}
+
+button.signout {
+    margin-top: 5%;
+    margin-left: 30%;
+    margin-right: 30%;
+    width: 40%;
+}

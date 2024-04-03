@@ -1,0 +1,37 @@
+sql = '''
+CREATE TABLE user
+(
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name   TEXT,
+    psw_hash    TEXT,
+    sign_up_ts  INT
+);
+'''
+
+sql = '''
+CREATE  TABLE  memo
+(
+    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    creater    INT,
+    created_ts INT,
+    updated_ts INT,
+    content    TEXT
+);
+'''
+
+
+// 每个用户一个资源数据库
+// type 指文件是内部文件还是外部文件，
+// 如果是内部文件，则content中是二进制数据，如果是外部文件，则其中是外部链接
+sql = '''
+CREATE TABLE resource
+(
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    creater         INT,
+    upload_ts       INT,
+    Belong_to_memo  INT,
+    type            TEXT,
+    content         BLOB,
+    len             INT
+);
+'''

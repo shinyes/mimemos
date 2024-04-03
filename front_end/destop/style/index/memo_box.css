@@ -1,0 +1,70 @@
+div.memo-box {
+    /* 暂时使用这个进行测试，到时候高度会根据内容变大 */
+    margin: 0.5%;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    border-style: inset;
+    border-width: 0.1em;
+    border-radius: 1em;
+}
+
+div.memo-info {
+    display: flex;
+}
+
+div.memo-time {
+    font-size: 0.5em;
+    font-weight: light;
+    align-items: stretch;
+}
+
+div.memo-box>p {
+    word-wrap: break-word;
+}
+
+
+div.memo-option-menu {
+    width: 10%;
+    font-size: 0.5em;
+    margin-left: auto;
+    font-weight: normal;
+    position: relative;
+}
+
+div.memo-option-menu>span {
+    display: block;
+    text-align: center;
+}
+
+div.memo-option-menu>span:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 用于让选项菜单脱离文档流，不再影响其他元素的布局 */
+div.memo-option-menu>div.options {
+    display: none;
+    position: absolute;
+}
+
+/* 当鼠标悬浮于 meme 选项菜单上时，展开选项列表 */
+div.memo-option-menu:hover>div.options {
+    display: block;
+    position: absolute;
+    right: 0;
+    width: 100%;
+
+    border-width: 0.13em;
+    border-style: dashed;
+    border-radius: 1em;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
+}
+
+/* memo的选项 */
+div.memo-option-menu:hover>div.options>div {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    text-align: center;
+    cursor: pointer;
+}
