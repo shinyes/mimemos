@@ -11,6 +11,7 @@ let submit_modify_memo = document.querySelector('button#submit_modify_memo')
 let modify_memo_textarea = document.querySelector('textarea#modify_memo_textarea')
 let modify_memo_window = document.querySelector('div#modify_memo_window')
 
+/* 提交 memo 修改按钮监听器，在此函数中会提交修改后的 memo text */
 submit_modify_memo.addEventListener('click', () => {
     let new_text = modify_memo_textarea.value
     if (new_text == "") {
@@ -25,7 +26,8 @@ submit_modify_memo.addEventListener('click', () => {
 
     // 提交修改后端记录的请求
     let data = {
-        'content': new_text
+        'memo_id': memo_id,
+        'text': new_text,
     }
     fetch('/modify_memo_text', {
         method: 'POST',

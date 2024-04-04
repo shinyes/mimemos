@@ -23,6 +23,18 @@ def insert_memo(token, memojson):
     return inserted_id
 
 
+def update_memo_text(memo_id: int, text: str):
+    '''
+    接受一个 memo 的 id, 然后修改对应 memo 的 text 字段
+    '''
+    with sqlite3.connect(load_config.main_data_path) as conn:
+        conn.execute('BEGIN TRANSACTION')
+        cur = conn.cursor()
+        sql = 'UPDATE memos SET text=? WHERE id=?'
+        cur.execute(sql, (text, memo_id))
+        conn.commit()
+
+
 def select_ten_memo_after_ts_and_gen_json(token: str, ts: int):
     '''
     从数据库中查询给定时间戳之后的前 10 条 memo 记录，并且生成 json 数组

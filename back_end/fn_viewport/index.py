@@ -1,6 +1,6 @@
 from flask import request, send_file, redirect, make_response, Blueprint, jsonify
 from fn_abou_db.token import token_is_ok
-from fn_abou_db.memo import insert_memo, select_ten_memo_after_ts_and_gen_json, delete_memo_by_id
+from fn_abou_db.memo import insert_memo, select_ten_memo_after_ts_and_gen_json, delete_memo_by_id, update_memo_text
 
 index_bp = Blueprint("index", __name__)
 
@@ -52,3 +52,17 @@ def delete_memo():
     if token_is_ok(token):
         memo_id = data['memo_id']
         return ('memo删除成功'.encode('utf-8'), 200) if delete_memo_by_id(memo_id) else ("memo删除失败", 210)
+
+
+@index_bp.route('/modify_memo_text', methods=['POST'])
+def modify_memo_text():
+    '''
+    修改 memo 的 text 字段
+    '''
+    token = request.cookies['token']
+    data = request.json  # 将 POST 请求体中的数据转换为字典
+    if token_is_ok(token):
+        memo_id = data['memo_id']
+        text = data['text']
+        update_memo_text(memo_id, text)
+        return ('修改成功', 200)
