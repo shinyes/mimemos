@@ -23,6 +23,22 @@ def insert_memo(token, memojson):
     return inserted_id
 
 
+def delete_memo_by_id(memo_id: int):
+    '''
+    接受 memo_id 然后删除对应的 memo
+    '''
+    with sqlite3.connect(load_config.main_data_path) as conn:
+        sql = '''DELETE FROM memos WHERE id = ?'''
+        cur = conn.cursor()
+        cur.execute(sql, (memo_id, ))
+        rows_affected = cur.rowcount
+        conn.commit()
+    if rows_affected == 1:
+        return True
+    else:
+        return False
+
+
 def update_memo_text(memo_id: int, text: str):
     '''
     接受一个 memo 的 id, 然后修改对应 memo 的 text 字段
@@ -58,19 +74,3 @@ def select_ten_memo_after_ts_and_gen_json(token: str, ts: int):
     for e in memos:
         l.append(dict(memo_id=e[0], text=e[1], created_ts=e[2], updated_ts=e[3]))
     return l
-
-
-def delete_memo_by_id(memo_id: int):
-    '''
-    接受 memo_id 然后删除对应的 memo
-    '''
-    with sqlite3.connect(load_config.main_data_path) as conn:
-        sql = '''DELETE FROM memos WHERE id = ?'''
-        cur = conn.cursor()
-        cur.execute(sql, (memo_id, ))
-        rows_affected = cur.rowcount
-        conn.commit()
-    if rows_affected == 1:
-        return True
-    else:
-        return False
