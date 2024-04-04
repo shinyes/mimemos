@@ -2,9 +2,6 @@ import {
     gen_memo_box
 } from "./memo_box.js"
 
-// 这个数组用于存放尚未提交的 memo
-export let unsubmitted_memos = []
-
 class resource {
     constructor(user_id, upload_ts, belong_to_memo, type, content) {
         this.user_id = user_id;
@@ -132,22 +129,3 @@ export async function request_ten_memos_json_arr_into_exhibit_area() {
     });
     return res
 }
-
-// 间隔 5s 执行检查和提交未上传的memo
-async function upload_unsubmitted_memos() {
-    setInterval(() => {
-        if (unsubmitted_memos.length !== 0) {
-            unsubmitted_memos[0].upload()
-                .then(res => {
-                    if (res === true) {
-                        console.log("上传一个memo成功 unsubmitted_memos 数组为", unsubmitted_memos)
-                        unsubmitted_memos.shift(); // 删除第一个元素
-                    } else {
-                        console.log("此次未上传成功")
-                    }
-                });
-        }
-    }, 5000);
-}
-upload_unsubmitted_memos()
-

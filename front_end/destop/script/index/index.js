@@ -1,4 +1,5 @@
-import { Memo, unsubmitted_memos, request_ten_memos_json_arr_into_exhibit_area } from "./memo.js";
+import { Memo, request_ten_memos_json_arr_into_exhibit_area } from "./memo.js";
+import { unsubmitted_memos } from "./post_queue.js";
 
 // 进入页面后立即请求 10 条 memo
 request_ten_memos_json_arr_into_exhibit_area()
