@@ -25,16 +25,17 @@ export class Memo {
         this.updated_ts = updated_ts;
     }
 
-    gen_memo_box() {
-        this.memo_box = gen_memo_box(this.text, this.created_ts, this.memo_id)
-        return this.memo_box
-    }
-
     /* 用于上传好 memo 之后返回 memo_id，然后设置对应的 memo-box 的属性 */
     set_memo_id(memo_id) {
         this.memo_id = memo_id
         this.memo_box.setAttribute("data-memo-id", this.memo_id);
     }
+
+    gen_memo_box() {
+        this.memo_box = gen_memo_box(this.text, this.created_ts, this.memo_id)
+        return this.memo_box
+    }
+
 
     /* 上传 memo */
     async upload() {

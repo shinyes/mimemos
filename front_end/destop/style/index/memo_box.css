@@ -67,4 +67,5 @@ div.memo-option-menu:hover>div.options>div {
     margin-bottom: 0.5em;
     text-align: center;
     cursor: pointer;
+    font-size: 1.7em;
 }

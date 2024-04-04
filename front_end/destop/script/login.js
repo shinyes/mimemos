@@ -15,7 +15,7 @@ btn_login.addEventListener('click', () => {
         redirect: 'follow', // 设置重定向选项为 follow
         body: JSON.stringify(data),
         headers: new Headers({
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json; charset=utf-8',
             'type': 'login',
         })
     }).then(response => {
@@ -39,7 +39,7 @@ btn_signup.addEventListener('click', () => {
         method: 'POST',
         redirect: 'follow', // 设置重定向选项为 follow
         headers: new Headers({
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json; charset=utf-8',
             'type': 'signup',
         }),
         body: JSON.stringify(data)

@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>主页</title>
     <link rel="stylesheet" href="./style/bouncy_button.css">
-    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="./style/index/index.css">
     <link rel="stylesheet" href="./style/index/memo_box.css">
+    <link rel="stylesheet" href="./style/index/modify_memo.css">
 </head>
 
 <body>
@@ -38,7 +39,12 @@
         </div>
     </div>
 
-
+    <div id="modify_memo_window">
+        <textarea id="modify_memo_textarea"></textarea>
+        <div id="modify_memo_tools">
+            <button id="submit_modify_memo">提交</button>
+        </div>
+    </div>
     <script src="./script/index.js" type="module"></script>
 </body>
 
