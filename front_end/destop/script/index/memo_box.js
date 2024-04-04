@@ -1,5 +1,5 @@
 import { delete_memo } from "./memo.js";
-import { set_memo_box_to_be_modified } from "./index/modify_memo.js"
+import { set_memo_box_to_be_modified } from "./modify_memo.js"
 
 /* 
 这个函数用于生成 memo-box 元素的模板，
