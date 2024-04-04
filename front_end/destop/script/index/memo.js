@@ -92,7 +92,7 @@ export async function delete_memo(memo_id) {
     })
 }
 
-// 从服务器请求十条 memo
+// 从服务器请求 10 条 memo
 let exhibit_area = document.querySelector("div.exhibit-area")
 let oldest_memo_ts;
 export async function request_ten_memos_json_arr_into_exhibit_area() {
@@ -114,7 +114,6 @@ export async function request_ten_memos_json_arr_into_exhibit_area() {
         body: JSON.stringify(data),
     }).then(response => {
         if (response.status === 200) {
-            console.log("获取十条memo成功")
             // response 返回的是一个 promise 对象，是异步操作，所以可以继续使用 then 来等待异步操作
             // 但是也可以用 await 来等待 resonse.json() 的结果
             return response.json()

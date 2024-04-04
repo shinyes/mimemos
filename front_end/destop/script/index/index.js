@@ -1,5 +1,7 @@
 import { Memo, request_ten_memos_json_arr_into_exhibit_area } from "./memo.js";
 import { unsubmitted_memos } from "./post_queue.js";
+// 运行 polling.js 脚本
+import { } from "./polling.js"
 
 // 进入页面后立即请求 10 条 memo
 request_ten_memos_json_arr_into_exhibit_area()
@@ -67,15 +69,4 @@ document.addEventListener('click', function (event) {
     }
 });
 
-// 每隔一秒通过滚动条检查列表是否需要获取更多 memo
-let request_ten_memos_interval = setInterval(async function () {
-    const scrollTop = exhibit_area.scrollTop
-    const scrollHeight = exhibit_area.scrollHeight - exhibit_area.clientHeight
-    const progress = (scrollTop / scrollHeight) * 100
-    if (progress.toFixed(2) < -40) {
-        // 一次性获取 10 条 memo
-        if (await request_ten_memos_json_arr_into_exhibit_area() === false) {
-            clearInterval(request_ten_memos_interval)
-        }
-    }
-}, 1000);
+
