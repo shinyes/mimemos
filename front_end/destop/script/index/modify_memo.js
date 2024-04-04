@@ -17,7 +17,8 @@ submit_modify_memo.addEventListener('click', () => {
     if (new_text == "") {
         return
     }
-    modify_memo_textarea.value = ""
+    // TODO 还需要想办法获取原本的 memo 的内容文本，并且在这里获取文本，然后赋值
+    modify_memo_textarea.value = ''
     let memo_id = memo_box_to_be_modified.getAttribute('data-memo-id')
     modify_memo_window.style.display = 'none';
 

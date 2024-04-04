@@ -1,6 +1,7 @@
 import { delete_memo } from "./memo.js";
 import { set_memo_box_to_be_modified } from "./modify_memo.js"
 import { memo_id_arr_of_to_be_del } from "./post_queue.js";
+import { marked } from "../base_mod/marked.esm.js"
 
 /* 
 这个函数用于生成 memo-box 元素的模板，
@@ -93,9 +94,9 @@ export function gen_memo_box(text, created_ts, memo_id) {
 
 /* 根据 text 生成memo_box */
 export function gen_memo_box_content(text) {
-    let content = document.createElement('p');
+    let content = document.createElement('div')
     content.className = 'content'
-    content.textContent = text
+    content.innerHTML = marked.parse(text)
     return content
 }
 

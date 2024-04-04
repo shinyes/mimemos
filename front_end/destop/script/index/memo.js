@@ -121,6 +121,10 @@ export async function request_ten_memos_json_arr_into_exhibit_area() {
     }).then(memos_json_arr => {
         if (memos_json_arr.length === 0) {
             res = false
+            let no_more_memos = document.createElement('div')
+            no_more_memos.id = 'no-more-memos-available'
+            no_more_memos.textContent = '没有更多 memo 了'
+            exhibit_area.appendChild(no_more_memos)
         } else {
             oldest_memo_ts = memos_json_arr[memos_json_arr.length - 1].created_ts
             for (const e of memos_json_arr) {
