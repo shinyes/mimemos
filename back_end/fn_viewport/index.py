@@ -64,5 +64,6 @@ def modify_memo_text():
     if token_is_ok(token):
         memo_id = data['memo_id']
         text = data['text']
-        update_memo_text(memo_id, text)
+        updated_ts = data['updated_ts']
+        update_memo_text(memo_id, text, updated_ts)
         return ('修改成功', 200)

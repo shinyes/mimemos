@@ -28,12 +28,14 @@ submit_modify_memo.addEventListener('click', () => {
     let data = {
         'memo_id': memo_id,
         'text': new_text,
+        'updated_ts': Math.floor(new Date().getTime() / 1000),
     }
+
     fetch('/modify_memo_text', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: new Headers({
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json; charset=utf-8',
         })
     }).then(response => { })
         .catch(error => console.error('出现错误:', error));
