@@ -1,6 +1,7 @@
 import { delete_memo } from "./memo.js";
 import { set_memo_box_to_be_modified } from "./modify_memo.js"
 import { memo_id_arr_of_to_be_del } from "./post_queue.js";
+// import markdownIt from 'https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/+esm'
 import { marked } from "../base_mod/marked.esm.js"
 
 /* 
@@ -92,11 +93,17 @@ export function gen_memo_box(text, created_ts, memo_id) {
     return new_memo_box
 }
 
+// const md = markdownIt();
 /* 根据 text 生成memo_box */
 export function gen_memo_box_content(text) {
     let content = document.createElement('div')
     content.className = 'content'
-    content.innerHTML = marked.parse(text)
+    // content.innerHTML = md.render(text)
+    content.innerHTML = marked(text, {
+        // gfm: true,
+        // break: true,
+        smartLists: true
+    })
     return content
 }
 
