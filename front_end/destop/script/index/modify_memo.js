@@ -1,4 +1,4 @@
-import { update_memo_box_content } from "../memo_box.js"
+import { update_memo_box_content } from "./memo_box.js"
 
 // 这个变量用来存储打开 modify_memo_window 后想要修改的 memo_box 对象
 let memo_box_to_be_modified;

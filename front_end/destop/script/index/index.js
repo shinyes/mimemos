@@ -1,4 +1,4 @@
-import { Memo, unsubmitted_memos, request_ten_memos_json_arr_into_exhibit_area, delete_memo } from "./memo.js";
+import { Memo, unsubmitted_memos, request_ten_memos_json_arr_into_exhibit_area } from "./memo.js";
 
 // 进入页面后立即请求 10 条 memo
 request_ten_memos_json_arr_into_exhibit_area()

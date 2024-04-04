@@ -41,11 +41,6 @@ function gen_memo_box_tmpl() {
     memo_del_option.textContent = '删除'
     memo_options.appendChild(memo_del_option)
 
-
-    // memo-box 的主要内容
-    let p = document.createElement('p');
-    p.className = 'content'
-    memo_box.appendChild(p)
     return memo_box
 }
 
@@ -82,13 +77,13 @@ document.addEventListener('click', function (event) {
     }
 });
 
-export function gen_memo_box(content, created_ts, memo_id) {
+export function gen_memo_box(text, created_ts, memo_id) {
     let new_memo_box = memo_box_tmpl.cloneNode(true) // true 表示复制整个元素，包括其子元素
     add_del_memo_listener(new_memo_box)
     add_modify_memo_listener(new_memo_box)
 
-    let content_p = new_memo_box.querySelector("p.content")
-    content_p.textContent = content;
+    // 生成 content 并添加
+    new_memo_box.appendChild(gen_memo_box_content(text))
 
     // 将 created_ts转换为日期，这个时间戳来自于python 所以单位是秒
     // 而js的时间戳是毫秒，所以要先乘 1000
@@ -101,6 +96,7 @@ export function gen_memo_box(content, created_ts, memo_id) {
     return new_memo_box
 }
 
+/* 根据 text 生成memo_box */
 export function gen_memo_box_content(text) {
     let content = document.createElement('p');
     content.className = 'content'
@@ -108,6 +104,7 @@ export function gen_memo_box_content(text) {
     return content
 }
 
+/* 对于给定的元素 memo_box 更新 content */
 export function update_memo_box_content(memo_box, text) {
     let content = memo_box.querySelector('.content')
     memo_box.removeChild(content)
