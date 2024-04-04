@@ -1,5 +1,6 @@
 import { delete_memo } from "./memo.js";
 import { set_memo_box_to_be_modified } from "./modify_memo.js"
+import { memo_id_arr_of_to_be_del } from "./post_queue.js";
 
 /* 
 这个函数用于生成 memo-box 元素的模板，
@@ -45,14 +46,18 @@ function gen_memo_box_tmpl() {
 }
 
 // memo-box 的模板
-let memo_box_tmpl = gen_memo_box_tmpl()
+export let memo_box_tmpl = gen_memo_box_tmpl()
 
 function add_del_memo_listener(memo_box) {
     let memo_del_option = memo_box.querySelector('div.memo-del-option')
     memo_del_option.addEventListener('click', () => {
         let memo_box = memo_del_option.parentNode.parentNode.parentNode.parentNode
         let memo_id = memo_box.getAttribute('data-memo-id')
-        delete_memo(memo_id)
+        delete_memo(memo_id).then((res) => {
+            if (res === false) {
+                memo_id_arr_of_to_be_del.push(Number(memo_id))
+            }
+        })
         memo_box.parentNode.removeChild(memo_box)
     })
 }
@@ -66,16 +71,6 @@ function add_modify_memo_listener(memo_box) {
         set_memo_box_to_be_modified(memo_box)
     })
 }
-
-/* 如果点击鼠标，且被点击的对象不在修改窗口内，则关闭修改窗口 */
-document.addEventListener('click', function (event) {
-    let modify_memo_window = document.querySelector("div#modify_memo_window")
-    if (modify_memo_window.style.display === 'block' && event.target.className !== "memo-modify-option") {
-        if (event.target !== modify_memo_window && !modify_memo_window.contains(event.target)) {
-            modify_memo_window.style.display = 'none';
-        }
-    }
-});
 
 export function gen_memo_box(text, created_ts, memo_id) {
     let new_memo_box = memo_box_tmpl.cloneNode(true) // true 表示复制整个元素，包括其子元素

@@ -66,13 +66,13 @@ export class Memo {
     }
 }
 
-
+import { memo_id_arr_of_to_be_del } from "./post_queue.js";
 export async function delete_memo(memo_id) {
     /* 
     通过 memo 的 id 发送报文到服务端请求删除 memo
     */
     let data = { 'memo_id': Number(memo_id) };
-    fetch('/delete_memo', {
+    return await fetch('/delete_memo', {
         method: 'POST',
         headers: new Headers({
             'Content-Type': 'application/json; charset=utf-8',
@@ -81,11 +81,14 @@ export async function delete_memo(memo_id) {
     }).then(response => {
         if (response.status === 200) {
             console.log('删除memo成功, 被删除的的memo的id为', memo_id)
+            return true
         } else if (response.status === 210) {
             console.log('删除memo失败, 没有 id 为', memo_id, '的 memo')
+            return false
         }
     }).catch(error => {
         console.error('出现错误:', error)
+        return false
     })
 }
 

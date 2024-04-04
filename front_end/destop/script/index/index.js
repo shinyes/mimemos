@@ -57,6 +57,16 @@ textarea_input_memo.addEventListener("keydown", function (event) {
     }
 });
 
+/* 如果点击鼠标，且被点击的对象不在修改窗口内，则关闭修改窗口 */
+document.addEventListener('click', function (event) {
+    let modify_memo_window = document.querySelector("div#modify_memo_window")
+    if (modify_memo_window.style.display === 'block' && event.target.className !== "memo-modify-option") {
+        if (event.target !== modify_memo_window && !modify_memo_window.contains(event.target)) {
+            modify_memo_window.style.display = 'none';
+        }
+    }
+});
+
 // 每隔一秒通过滚动条检查列表是否需要获取更多 memo
 let request_ten_memos_interval = setInterval(async function () {
     const scrollTop = exhibit_area.scrollTop
