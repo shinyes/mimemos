@@ -7,8 +7,17 @@ div#modify-memo-window {
 
     padding: 1%;
 
-    width: 30%;
-    height: 30%;
+    /* 比50em宽时 */
+    @media (min-width: 50em) {
+        width: 30%;
+        height: 30%;
+    }
+
+    /* 比50em窄时 */
+    @media (max-width: 50em) {
+        width: 70%;
+        height: 40%;
+    }
 
     background-color: white;
     border-style: solid;

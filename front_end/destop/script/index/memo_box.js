@@ -74,7 +74,7 @@ function add_modify_memo_listener(memo_box) {
         let modify_memo_textarea = modify_memo_window.querySelector('textarea#modify-memo-textarea')
         modify_memo_textarea.value = memo.text
         modify_memo_window.style.display = 'block'
-
+        modify_memo_textarea.focus()
         set_memo_box_to_be_modified(memo_box)
     })
 }
