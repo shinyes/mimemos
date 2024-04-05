@@ -1,3 +1,4 @@
+import { memos } from "./memo.js";
 import { update_memo_box_content } from "./memo_box.js"
 
 // 这个变量用来存储打开 modify_memo_window 后想要修改的 memo_box 对象
@@ -23,14 +24,15 @@ submit_modify_memo.addEventListener('click', () => {
         return
     }
 
-    // TODO 还需要想办法获取原本的 memo 的内容文本，并且在这里获取文本，然后赋值
     modify_memo_textarea.value = ''
     modify_memo_window.style.display = 'none';
 
     // 前端修改 memo_box 显示的内容
     update_memo_box_content(memo_box_to_be_modified, new_text)
-
     let memo_id = memo_box_to_be_modified.getAttribute('data-memo-id')
+    let memo = memos.find(e => e.memo_id === Number(memo_id));
+    memo.text = new_text
+
     // 提交修改后端记录的请求
     let data = {
         'memo_id': memo_id,
