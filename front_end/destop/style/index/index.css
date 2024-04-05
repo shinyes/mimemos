@@ -181,3 +181,11 @@ div#no-more-memos-available {
     margin: 5%;
     text-align: center;
 }
+
+code {
+    font-family: consolas;
+}
+
+.MathJax {
+    font-size: 100% !important;
+}
