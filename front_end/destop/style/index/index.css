@@ -43,6 +43,8 @@ div.left-contianer {
 }
 
 div.mid-container {
+    display: flex;
+    flex-direction: column-reverse;
 
     /* 比50em宽时 */
     @media (min-width: 50em) {
@@ -55,12 +57,9 @@ div.mid-container {
     /* 比50em窄时 */
     @media (max-width: 50em) {
         width: 100%;
+        flex-direction: column;
     }
-
-    display: flex;
-    flex-direction: column;
 }
-
 
 div.top-bar {
 
@@ -86,7 +85,9 @@ div.exhibit-area {
 
     /* 比50em宽时 */
     @media (min-width: 50em) {
-        margin: 1%;
+        margin-left: 1%;
+        margin-right: 1%;
+        margin-bottom: 1%;
         height: 75%;
     }
 
@@ -98,15 +99,10 @@ div.exhibit-area {
     }
 
     display: flex;
-    flex-direction: column-reverse;
+    /* flex-direction: column-reverse; */
+    flex-direction: column;
     justify-content: flex-start;
-
     overflow-y: auto;
-}
-
-/* 隐藏滚动条 */
-div.exhibit-area::-webkit-scrollbar {
-    display: none;
 }
 
 div.editor-area {
@@ -114,7 +110,9 @@ div.editor-area {
 
     /* 比50em宽时 */
     @media (min-width: 50em) {
-        margin: 1%;
+        margin-top: 1%;
+        margin-left: 1%;
+        margin-right: 1%;
         height: 25%;
         width: 97.5%;
         border-width: 0.13em;
@@ -142,7 +140,6 @@ div.input-container {
     width: 65%;
     height: 100%;
 }
-
 
 textarea.input-memo {
     padding: 3%;

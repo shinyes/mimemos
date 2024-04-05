@@ -22,7 +22,7 @@ div.memo-box>p {
     word-wrap: break-word;
 }
 
-
+/* memo 配置菜单 */
 div.memo-option-menu {
     width: 10%;
     font-size: 0.5em;
@@ -41,10 +41,8 @@ div.memo-option-menu>span:hover {
     font-weight: bold;
 }
 
-/* 用于让选项菜单脱离文档流，不再影响其他元素的布局 */
 div.memo-option-menu>div.options {
     display: none;
-    position: absolute;
 }
 
 /* 当鼠标悬浮于 meme 选项菜单上时，展开选项列表 */
@@ -68,4 +66,22 @@ div.memo-option-menu:hover>div.options>div {
     text-align: center;
     cursor: pointer;
     font-size: 1.7em;
+}
+
+div.memo-box>div.content {
+    margin: 5% 0 5% 0;
+}
+
+div.content blockquote {
+    margin: 0;
+    padding-left: 1em;
+
+    border-width: 0;
+    border-left-width: 0.2em;
+    border-style: solid;
+    border-color: gray;
+}
+
+div.content blockquote p {
+    margin-top: 0;
 }
