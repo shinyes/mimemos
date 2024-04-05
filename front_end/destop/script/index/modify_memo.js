@@ -2,14 +2,19 @@ import { update_memo_box_content } from "./memo_box.js"
 
 // 这个变量用来存储打开 modify_memo_window 后想要修改的 memo_box 对象
 let memo_box_to_be_modified;
+
 // 由于 import 导入的变量被视作 const 变量，所以外部只能使用这个函数来修改变量 memo_box_to_be_modified
 export function set_memo_box_to_be_modified(memo_box) {
     memo_box_to_be_modified = memo_box
 }
 
-let submit_modify_memo = document.querySelector('button#submit_modify_memo')
-let modify_memo_textarea = document.querySelector('textarea#modify_memo_textarea')
-let modify_memo_window = document.querySelector('div#modify_memo_window')
+export function get_memo_box_to_be_modified() {
+    return memo_box_to_be_modified
+}
+
+let submit_modify_memo = document.querySelector('button#submit-modify-memo')
+let modify_memo_textarea = document.querySelector('textarea#modify-memo-textarea')
+let modify_memo_window = document.querySelector('div#modify-memo-window')
 
 /* 提交 memo 修改按钮监听器，在此函数中会提交修改后的 memo text */
 submit_modify_memo.addEventListener('click', () => {
@@ -17,14 +22,15 @@ submit_modify_memo.addEventListener('click', () => {
     if (new_text == "") {
         return
     }
+
     // TODO 还需要想办法获取原本的 memo 的内容文本，并且在这里获取文本，然后赋值
     modify_memo_textarea.value = ''
-    let memo_id = memo_box_to_be_modified.getAttribute('data-memo-id')
     modify_memo_window.style.display = 'none';
 
     // 前端修改 memo_box 显示的内容
     update_memo_box_content(memo_box_to_be_modified, new_text)
 
+    let memo_id = memo_box_to_be_modified.getAttribute('data-memo-id')
     // 提交修改后端记录的请求
     let data = {
         'memo_id': memo_id,

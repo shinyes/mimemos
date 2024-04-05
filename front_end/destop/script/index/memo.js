@@ -13,6 +13,8 @@ class resource {
     }
 }
 
+export let memos = []
+
 export class Memo {
     constructor(memo_id, text, created_ts = Math.floor(new Date().getTime() / 1000), updated_ts = created_ts) {
         this.memo_id = memo_id
@@ -20,9 +22,10 @@ export class Memo {
         // 生成当前时间戳
         this.created_ts = created_ts;
         this.updated_ts = updated_ts;
+        memos.push(this)
     }
 
-    /* 用于上传好 memo 之后返回 memo_id，然后设置对应的 memo-box 的属性 */
+    /* 用于新键memo时没有 memo_id，上传好 memo 之后返回 memo_id，然后设置对应的 memo-box 的属性 */
     set_memo_id(memo_id) {
         this.memo_id = memo_id
         this.memo_box.setAttribute("data-memo-id", this.memo_id);
@@ -66,7 +69,6 @@ export class Memo {
     }
 }
 
-import { memo_id_arr_of_to_be_del } from "./post_queue.js";
 export async function delete_memo(memo_id) {
     /* 
     通过 memo 的 id 发送报文到服务端请求删除 memo
@@ -121,6 +123,8 @@ export async function request_ten_memos_json_arr_into_exhibit_area() {
     }).then(memos_json_arr => {
         if (memos_json_arr.length === 0) {
             res = false
+
+            //添加用于提示没有更多 memo 的元素到 exhibit_area 中
             let no_more_memos = document.createElement('div')
             no_more_memos.id = 'no-more-memos-available'
             no_more_memos.textContent = '没有更多 memo 了'

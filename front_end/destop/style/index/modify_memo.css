@@ -1,4 +1,4 @@
-div#modify_memo_window {
+div#modify-memo-window {
     display: none;
     position: fixed;
     top: 50%;
@@ -17,7 +17,7 @@ div#modify_memo_window {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 1);
 }
 
-textarea#modify_memo_textarea {
+textarea#modify-memo-textarea {
     padding: 1em;
 
     width: 100%;
@@ -30,12 +30,12 @@ textarea#modify_memo_textarea {
     font-size: 1.3em;
 }
 
-div#modify_memo_tools {
+div#modify-memo-tools {
     margin-top: 2%;
     height: 28%;
 }
 
-button#submit_modify_memo {
+button#submit-modify-memo {
     margin-left: 85%;
     width: 15%;
     min-width: 4em;

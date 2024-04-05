@@ -1,4 +1,4 @@
-import { delete_memo } from "./memo.js";
+import { delete_memo, memos } from "./memo.js";
 import { set_memo_box_to_be_modified } from "./modify_memo.js"
 import { memo_id_arr_of_to_be_del } from "./post_queue.js";
 import { marked } from "../base_mod/marked.esm.js"
@@ -67,8 +67,14 @@ function add_del_memo_listener(memo_box) {
 function add_modify_memo_listener(memo_box) {
     let memo_modify_option = memo_box.querySelector("div.memo-modify-option")
     memo_modify_option.addEventListener('click', () => {
-        let modify_memo = document.querySelector('div#modify_memo_window')
-        modify_memo.style.display = 'block'
+        let memo_id = memo_box.getAttribute('data-memo-id')
+        let memo = memos.find(e => e.memo_id === Number(memo_id));
+
+        let modify_memo_window = document.querySelector('div#modify-memo-window')
+        let modify_memo_textarea = modify_memo_window.querySelector('textarea#modify-memo-textarea')
+        modify_memo_textarea.value = memo.text
+        modify_memo_window.style.display = 'block'
+
         set_memo_box_to_be_modified(memo_box)
     })
 }
