@@ -179,8 +179,9 @@ div#no-more-memos-available {
     text-align: center;
 }
 
-code {
-    font-family: consolas;
+div.memo-box>div.content code {
+    font-family: 'consolas', 'Courier New', Courier, monospace;
+    border-radius: 1em;
 }
 
 .MathJax {
