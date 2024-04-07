@@ -137,7 +137,7 @@ div.editor-area {
 }
 
 div.input-container {
-    width: 65%;
+    width: 100%;
     height: 100%;
 }
 
@@ -147,22 +147,17 @@ textarea.input-memo {
     width: 100%;
     resize: none;
     font-size: 1.1em;
+
+    border-radius: 1em;
 }
 
 div.input-tools {
-    margin-top: 5%;
+    margin-top: 2%;
     height: 25%;
     background-color: antiquewhite;
     display: flex;
     flex-direction: row-reverse;
     align-items: flex-end;
-}
-
-div.input-resource {
-    background-color: aliceblue;
-    margin-left: 4%;
-    width: 31%;
-    height: 100%;
 }
 
 button.signout {

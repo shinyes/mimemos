@@ -3,9 +3,10 @@ div.memo-box {
     margin: 0.5%;
     padding-left: 1.5em;
     padding-right: 1.5em;
-    border-style: inset;
     border-width: 0.1em;
     border-radius: 1em;
+    border-style: solid;
+    border-color: gray;
 }
 
 div.memo-info {
