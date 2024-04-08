@@ -17,19 +17,22 @@ app.register_blueprint(root_bp)
 app.register_blueprint(index_bp)
 
 
-# 响应 script 中的文件的请求，并发送文件
-@app.route('/script/<path:filename>')
-def get_script(filename):
-    directory = '../front_end/destop/script'
-    return send_from_directory(directory, filename)
+@app.route('/<path:filename>')
+def get_file(filename):
+    return send_from_directory('../front_end/destop', filename)
 
 
-# 响应 style 中的文件的请求，并发送文件
-@app.route('/style/<path:filename>')
-def get_style(filename):
-    directory = '../front_end/destop/style'
-    return send_from_directory(directory, filename)
+# # 响应 script 中的文件的请求，并发送文件
+# @app.route('/script/<path:filename>')
+# def get_script(filename):
+#     directory = '../front_end/destop/script'
+#     return send_from_directory(directory, filename)
 
+# # 响应 style 中的文件的请求，并发送文件
+# @app.route('/style/<path:filename>')
+# def get_style(filename):
+#     directory = '../front_end/destop/style'
+#     return send_from_directory(directory, filename)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5050)

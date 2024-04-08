@@ -62,19 +62,18 @@ div.mid-container {
 }
 
 div.top-bar {
+    flex-grow: 0;
 
     /* 比50em宽时 */
     @media (min-width: 50em) {
-        visibility: hidden;
-        height: 0%;
+        display: none;
     }
 
     /* 比50em窄时 */
     @media (max-width: 50em) {
         margin-left: 0.5em;
         margin-right: 0.5em;
-        height: 10%;
-
+        /* height: 10%; */
         border-width: 0.13em;
         border-style: solid;
         border-radius: 1em;
@@ -82,6 +81,7 @@ div.top-bar {
 }
 
 div.exhibit-area {
+    flex-grow: 3;
 
     /* 比50em宽时 */
     @media (min-width: 50em) {
@@ -107,14 +107,15 @@ div.exhibit-area {
 
 div.editor-area {
     box-sizing: border-box;
+    flex-grow: 1;
 
     /* 比50em宽时 */
     @media (min-width: 50em) {
         margin-top: 1%;
         margin-left: 1%;
         margin-right: 1%;
-        height: 25%;
-        width: 97.5%;
+        /* height: 25%;
+        width: 97.5%; */
         border-width: 0.13em;
         border-style: solid;
         border-radius: 1em;
@@ -125,8 +126,7 @@ div.editor-area {
         margin: 1%;
         margin-bottom: 0;
         margin-top: 0;
-        height: 15%;
-
+        /* height: 15%; */
         border-width: 0.13em;
         border-style: solid;
         border-radius: 1em;
@@ -137,11 +137,13 @@ div.editor-area {
 }
 
 div.input-container {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 100%;
 }
 
 textarea.input-memo {
+    /* flex-grow: 0; */
     padding: 3%;
     height: 65%;
     width: 100%;
@@ -152,12 +154,26 @@ textarea.input-memo {
 }
 
 div.input-tools {
+    /* flex-grow: 0; */
     margin-top: 2%;
-    height: 25%;
-    background-color: antiquewhite;
+    height: 2em;
     display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-end;
+}
+
+.input-tools>* {
+    margin-left: 3%;
+}
+
+#upload-resc {
+    height: 2em;
+    width: auto;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+button.submit-memo {
+    /* 让这个按钮放在这一行的末端 */
+    margin-left: auto;
 }
 
 button.signout {
