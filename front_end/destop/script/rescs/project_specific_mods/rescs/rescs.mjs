@@ -21,7 +21,6 @@ export function create_rescs(file_input) {
     plus_img.classList.add('viewer-ignore')
 
     plus_img.src = curr_script_dir_path + '/' + './assets/plus.svg'
-    // plus_img.src = "/script/drag_and_viewer_and_mivd/assets/plus.svg"
 
     /*
     点击 upload_btn 后弹窗示意上传文件
@@ -96,5 +95,6 @@ function listen_input_then_create(rescs, plus_resc, file_input) {
             // 开始读取文件
             reader.readAsDataURL(file);
         }
+        file_input.value = ''
     });
 }
