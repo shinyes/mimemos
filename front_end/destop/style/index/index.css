@@ -138,8 +138,13 @@ textarea.input-memo {
     width: 100%;
     resize: none;
     font-size: 1.1em;
-
     border-radius: 1em;
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: box-shadow 0.3s ease;
 }
 
 div.input-tools {
