@@ -1,5 +1,7 @@
 import { Memo, request_ten_memos_json_arr_into_exhibit_area } from "./memo.js";
 import { unsubmitted_memos } from "./post_queue.js";
+import { create_rescs } from "../rescs/project_specific_mods/rescs/rescs.mjs"
+
 
 // 运行 polling.js 脚本
 import { } from "./polling.js"
@@ -66,3 +68,18 @@ document.addEventListener('click', function (event) {
         }
     }
 });
+
+
+let input_file = document.querySelector('input#input-file')
+let upload_resc = document.querySelector('#upload-resc')
+let is_rescs_exists;
+upload_resc.addEventListener('click', () => {
+    input_file.click()
+    if (!is_rescs_exists) {
+        let input_tools = document.querySelector('div.input-tools')
+        let input_container = document.querySelector('div.input-container')
+        input_container.insertBefore(create_rescs(input_file), input_tools)
+        is_rescs_exists = true;
+    }
+})
+

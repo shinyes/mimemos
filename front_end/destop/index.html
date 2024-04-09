@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="./style/index/memo_box.css">
     <link rel="stylesheet" href="./style/index/modify_memo.css">
 
+    <link rel="stylesheet" href="./script/rescs/third_party_mods/viewer/viewer.css">
+    <link rel="stylesheet" href="./script/rescs/project_specific_mods/rescs/rescs.css">
+    <link rel="stylesheet" href="./script/rescs/mi_mods/mivd/mivd.css">
+
     <!-- 引入代码块高亮样式以及脚本 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
-
 
     <!-- 引入公式样式以及配置 -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
@@ -35,7 +38,9 @@
             <div class="editor-area">
                 <div class="input-container">
                     <textarea class="input-memo"></textarea>
+
                     <div class="input-tools">
+                        <input id="input-file" multiple type="file" style="display: none;">
                         <img id="upload-resc" src="./assets/folder-plus.svg">
                         <button class="submit-memo"><span class="button-top">提交</span></button>
                     </div>
@@ -59,9 +64,8 @@
 </body>
 
 <!-- 添加 Sortable 和  viewer.js 这两个脚本将在 rescs.js 的调用链中被调用 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.js"></script>
-
+<script src="./script/rescs/third_party_mods/Sortable.min.js"></script>
+<script src="./script/rescs/third_party_mods/viewer/viewer.js"></script>
 <script src="./script/index/index.js" type="module"></script>
 
 <script>

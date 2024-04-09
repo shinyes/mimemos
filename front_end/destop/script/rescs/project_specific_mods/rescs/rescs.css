@@ -1,0 +1,75 @@
+.rescs {
+    padding: 1vh;
+
+    display: grid;
+
+    /* auto-fill 代表不确定列数，后面的宽度来决定 */
+    grid-template-columns: repeat(auto-fill, 10vh);
+    /* 不确定有多少列，但每列的高度为属性值 */
+    grid-auto-rows: 10vh;
+    /* 列之间均匀分布在 grid 容器中 */
+    justify-content: space-between;
+    /* 之间的间距 */
+    row-gap: 1vh;
+
+    /* 虽然指定了 justify-content，格子的列间距就会自动去计算，
+       但是，继续设置 column-gap 就相当于设置了一个最小的列间距 */
+    column-gap: 1vh;
+}
+
+.resc {
+    position: relative;
+    border-color: aliceblue;
+    border-width: 1vh;
+    border-radius: 1vh;
+
+    overflow: hidden;
+}
+
+.resc>img {
+    height: 100%;
+    width: 100%;
+    /* 图片水平和垂直方向放在中间 */
+    /* object-position: center; */
+    /* 放进img元素中，超出的部分不显示，这样可以让图片不被拉伸 */
+    object-fit: cover;
+    cursor: move;
+}
+
+
+.resc>video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.plus-resc {
+    position: relative;
+    border-radius: 20%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.plus-resc>img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    opacity: 1;
+}
+
+/* 删除 resc 的按钮（其实是图片） */
+.del-resc-btn {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    transform: translate(-20%, 20%) !important;
+    width: 30% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    opacity: 1 !important;
+    cursor: pointer !important;
+}
