@@ -183,10 +183,12 @@ button.signout {
     width: 40%;
 }
 
+/* 没有更多 memo 了 */
 div#no-more-memos-available {
     height: 20%;
     width: 90%;
     margin: 5%;
+    color: gray;
     text-align: center;
 }
 

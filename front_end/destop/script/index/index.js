@@ -34,9 +34,6 @@ btn_submit_memo.addEventListener('click', async () => {
     let memo_box = memo.gen_memo_box()
     exhibit_area.prepend(memo_box);
 
-    // 让滚动条到底部
-    exhibit_area.scrollTop = exhibit_area.scrollHeight;
-
     // 如果上传不成功，则将这个元素添加至「unsubmitted_memos」中
     let res = await memo.upload();
     if (res === false) {
