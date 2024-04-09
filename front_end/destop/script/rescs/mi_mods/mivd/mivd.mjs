@@ -31,7 +31,7 @@ let play_icon_of_video_to_be_play; // 播放示意图标
 export function add_mivd(element) {
     let play_icon = document.createElement('img')
     play_icon.classList.add('mivd-play-icon')
-    play_icon.setAttribute('src', curr_script_dir_path + '/' + './css_js/mivd/play.svg')
+    play_icon.setAttribute('src', curr_script_dir_path + '/' + 'play.svg')
     element.appendChild(play_icon)
 
     element.addEventListener('click', () => {
