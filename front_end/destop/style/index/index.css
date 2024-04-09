@@ -62,24 +62,6 @@ div.mid-container {
     }
 }
 
-div.top-bar {
-
-    /* 比50em宽时 */
-    @media (min-width: 50em) {
-        display: none;
-    }
-
-    /* 比50em窄时 */
-    @media (max-width: 50em) {
-        margin-left: 0.5em;
-        margin-right: 0.5em;
-        /* height: 10%; */
-        border-width: 0.13em;
-        border-style: solid;
-        border-radius: 1em;
-    }
-}
-
 div.exhibit-area {
     display: flex;
     flex-direction: column;
