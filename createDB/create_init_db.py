@@ -12,7 +12,7 @@ with sqlite3.connect(os.path.join(curr_dir, "../back_end/db/main_data.sl3")) as 
     CREATE TABLE users
     (
         id          INTEGER PRIMARY KEY AUTOINCREMENT,
-        username   TEXT UNIQUE,
+        username    TEXT UNIQUE,
         psw_hash    TEXT,
         sign_up_ts  INT
     );
@@ -36,11 +36,12 @@ with sqlite3.connect(os.path.join(curr_dir, "../back_end/db/main_data.sl3")) as 
     sql = '''
     CREATE TABLE memos
     (
-        id          INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id     INT,
-        created_ts   INT,
-        updated_ts   INT,
-        text     TEXT
+        id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id             INT,
+        created_ts          INT,
+        updated_ts          INT,
+        text                TEXT,
+        resource_id_queue   TEXT
     )
     '''
     conn.execute(sql)
