@@ -1,6 +1,6 @@
 import { unsubmitted_memos } from "../scripts/index/post_queue.js";
 import { Memo } from "../scripts/index/memo.js";
-import { create_rescs } from "../scripts/rescs/project_specific_mods/rescs/rescs.mjs"
+import { create_rescs } from "../../modules/rescs/project_specific_mods/rescs/rescs.mjs"
 
 // 获取登出按钮
 let btn_signout = document.querySelector("button.signout")

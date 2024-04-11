@@ -19,7 +19,7 @@ app.register_blueprint(index_bp)
 
 @app.route('/<path:filename>')
 def get_file(filename):
-    return send_from_directory('../front_end/destop', filename)
+    return send_from_directory('../front_end', filename)
 
 
 # # 响应 script 中的文件的请求，并发送文件

@@ -13,7 +13,7 @@ root_bp = Blueprint("root", __name__)
 
 @root_bp.route('/')
 def get_login():
-    return send_file(os.path.join(load_config.root_dir, 'front_end/destop/login.html'), as_attachment=False)
+    return send_file(os.path.join(load_config.root_dir, 'front_end/login.html'), as_attachment=False)
 
 
 @root_bp.route('/login', methods=['POST'])
