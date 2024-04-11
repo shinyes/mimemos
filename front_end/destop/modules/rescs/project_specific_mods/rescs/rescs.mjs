@@ -46,32 +46,6 @@ export function create_rescs(file_input) {
         }
     });
 
-    /* 为 rescs 施加 viewer.js 功能 */
-    new Viewer(rescs, {
-        toolbar: {
-            zoomIn: false,
-            zoomOut: false,
-            oneToOne: false,
-            reset: true,
-            prev: true,
-            play: false,
-            next: true,
-            rotateLeft: false,
-            rotateRight: false,
-            flipHorizontal: false,
-            flipVertical: false
-        },
-        // 设置选项，可以根据需要进行配置
-        inline: false, // 非容器内显示
-        viewed() {
-            initialZoomRatio: 0.8;
-        },
-        filter: function (item) {
-            // 包含 viewer-ignore 的元素就不加入展示
-            return !item.classList.contains('viewer-ignore');
-        }
-    });
-
     return rescs
 }
 

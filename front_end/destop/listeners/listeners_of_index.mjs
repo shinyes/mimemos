@@ -1,15 +1,16 @@
-import { Memo, request_ten_memos_json_arr_into_exhibit_area } from "./memo.js";
-import { unsubmitted_memos } from "./post_queue.js";
-import { create_rescs } from "../rescs/project_specific_mods/rescs/rescs.mjs"
+import { unsubmitted_memos } from "../scripts/index/post_queue.js";
+import { Memo } from "../scripts/index/memo.js";
+import { create_rescs } from "../scripts/rescs/project_specific_mods/rescs/rescs.mjs"
 
-
-// 运行 polling.js 脚本
-import { } from "./polling.js"
-
-// 进入页面后立即请求 10 条 memo
-request_ten_memos_json_arr_into_exhibit_area()
-
+// 获取登出按钮
 let btn_signout = document.querySelector("button.signout")
+// 获取提交按钮
+let btn_submit_memo = document.querySelector("button.submit-memo")
+// 获取 memo 的展示区域
+let exhibit_area = document.querySelector("div.exhibit-area")
+// 获取输入 memo 的文本输入框
+let textarea_input_memo = document.querySelector("textarea.input-memo")
+
 
 // 点击「登出」按钮时删除 cookie，并跳转至 host
 btn_signout.addEventListener("click", () => {
@@ -19,11 +20,7 @@ btn_signout.addEventListener("click", () => {
 });
 
 
-let btn_submit_memo = document.querySelector("button.submit-memo")
-let exhibit_area = document.querySelector("div.exhibit-area")
-let textarea_input_memo = document.querySelector("textarea.input-memo")
-
-// 点击「提交」
+// 监听点击提交memo的按钮
 btn_submit_memo.addEventListener('click', async () => {
     let text = textarea_input_memo.value
     if (text === '') {
@@ -44,7 +41,7 @@ btn_submit_memo.addEventListener('click', async () => {
 });
 
 
-// 输入时按下回车 shift + enter 就提交 memos
+// 监听在输入memo的文本时，如果按下回车 shift + enter，就提交 memos
 textarea_input_memo.addEventListener("keydown", function (event) {
     if (event.key === "Enter" && !event.shiftKey) {
         var start = textarea_input_memo.selectionStart;
@@ -59,7 +56,8 @@ textarea_input_memo.addEventListener("keydown", function (event) {
     }
 });
 
-/* 如果点击鼠标，且被点击的对象不在修改窗口内，则关闭修改窗口 */
+
+// 监听：在打开memo修改窗口时，如果点击窗口外，就关闭memo修改窗口
 document.addEventListener('click', function (event) {
     let modify_memo_window = document.querySelector("div#modify-memo-window")
     if (modify_memo_window.style.display === 'block' && event.target.className !== "memo-modify-option") {
@@ -70,6 +68,7 @@ document.addEventListener('click', function (event) {
 });
 
 
+// 监听点击上传memo的附属文件时，浏览器请求上传文件，并显示 rescs 块
 let input_file = document.querySelector('input#input-file')
 let upload_resc = document.querySelector('#upload-resc')
 let is_rescs_exists;
@@ -82,4 +81,3 @@ upload_resc.addEventListener('click', () => {
         is_rescs_exists = true;
     }
 })
-

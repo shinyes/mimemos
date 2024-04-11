@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>主页</title>
-    <link rel="stylesheet" href="./style/bouncy_button.css">
-    <link rel="stylesheet" href="./style/index/index.css">
-    <link rel="stylesheet" href="./style/index/memo_box.css">
-    <link rel="stylesheet" href="./style/index/modify_memo.css">
+    <link rel="stylesheet" href="./styles/bouncy_button.css">
+    <link rel="stylesheet" href="./styles/index/index.css">
+    <link rel="stylesheet" href="./styles/index/memo_box.css">
+    <link rel="stylesheet" href="./styles/index/modify_memo.css">
 
-    <link rel="stylesheet" href="./script/rescs/third_party_mods/viewer/viewer.css">
-    <link rel="stylesheet" href="./script/rescs/project_specific_mods/rescs/rescs.css">
-    <link rel="stylesheet" href="./script/rescs/mi_mods/mivd/mivd.css">
+
+    <link rel="stylesheet" href="./modules/rescs/project_specific_mods/rescs/rescs.css">
+    <link rel="stylesheet" href="./modules/rescs/mi_mods/mivd/mivd.css">
 
     <!-- 引入代码块高亮样式以及脚本 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
@@ -61,9 +61,11 @@
 </body>
 
 <!-- 添加 Sortable 和  viewer.js 这两个脚本将在 rescs.js 的调用链中被调用 -->
-<script src="./script/rescs/third_party_mods/Sortable.min.js"></script>
-<script src="./script/rescs/third_party_mods/viewer/viewer.js"></script>
-<script src="./script/index/index.js" type="module"></script>
+<script src="./scripts/rescs/third_party_mods/Sortable.min.js"></script>
+
+
+<script src="./entry_scripts/entry_script_of_index.mjs" type="module"></script>
+<script type="module" src="./listeners/listeners_of_index.mjs"></script>
 
 <script>
     // 重复执行渲染公式

@@ -3,7 +3,9 @@ input_password = document.querySelector('input.password')
 btn_login = document.querySelector('button.login')
 btn_signup = document.querySelector('button.signup')
 
-
+/* 
+监听点击登录按钮
+*/
 btn_login.addEventListener('click', () => {
     var data = {
         'username': input_username.value,
@@ -29,6 +31,9 @@ btn_login.addEventListener('click', () => {
     }).catch(error => console.error('Error:', error));
 });
 
+/* 
+监听点击注册按钮
+*/
 btn_signup.addEventListener('click', () => {
     var data = {
         'username': input_username.value,
