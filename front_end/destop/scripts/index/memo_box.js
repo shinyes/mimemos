@@ -1,7 +1,7 @@
 import { delete_memo, memos } from "./memo.js";
 import { set_memo_box_to_be_modified } from "./modify_memo.js"
 import { memo_id_arr_of_to_be_del } from "./post_queue.js";
-import { marked } from "../../../modules/base_mods/marked.esm.js"
+import { marked } from "../../../modules/base_modules/marked.esm.js"
 
 /* 
 这个函数用于生成 memo-box 元素的模板，
