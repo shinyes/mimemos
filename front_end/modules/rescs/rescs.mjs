@@ -1,6 +1,6 @@
 import { create_resc } from "./resc.mjs"
 import Sortable from "../sortable.complete.esm.js"
-import { empower_miviewer } from "../miviewer/miviewer.mjs"
+import { recreate_miviewer_container } from "../miviewer/miviewer.mjs"
 import { query_ancestor_by_class_name } from "../base_modules/query_ancestor.js"
 
 const currentScriptUrl = import.meta.url;
@@ -49,6 +49,8 @@ export function create_rescs(file_input) {
         }
     });
 
+    rescs.classList.add('miviewer-container')
+
     return rescs
 }
 
@@ -68,10 +70,8 @@ function listen_input_then_create(rescs, plus_resc, file_input) {
                 const fileType = file.type.split('/')[0]; // 获取文件类型
                 let resc = create_resc(fileType, event2.target.result)
                 rescs.insertBefore(resc, plus_resc)
-                empower_miviewer(query_ancestor_by_class_name(rescs, 'rescs'), {
-                    filter: e => {
-                        return e.parentNode.classList.contains('resc') && !e.classList.contains('del-resc-btn')
-                    }
+                resc.addEventListener('click', e => {
+                    recreate_miviewer_container(resc.firstChild)
                 })
             };
             // 开始读取文件

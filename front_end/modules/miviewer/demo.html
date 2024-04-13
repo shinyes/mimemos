@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="miviewer.css">
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .miviewer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 10vh);
+            grid-auto-rows: 10vh;
+            justify-items: center;
+            /* 水平居中 */
+            align-items: center;
+            /* 垂直居中 */
+        }
+
+        .miviewer-container>img,
+        .miviewer-container>video {
+            max-width: 100%;
+            /* 图片和视频元素的最大宽度为其父容器的宽度 */
+            max-height: 100%;
+            /* 图片和视频元素的最大高度为其父容器的高度 */
+            object-fit: contain !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="miviewer-container">
+        <img class="miviewer-item" src="./assets/play.svg">
+        <img class="miviewer-item" src="./assets/times.svg">
+    </div>
+    <div class="miviewer-container">
+        <img class="miviewer-item" src="./assets/play.svg">
+        <img class="miviewer-item ignore" src="./assets/play.svg">
+        <img class="miviewer-item" src="./assets/times.svg">
+    </div>
+</body>
+
+<!-- <script type="module">
+    import { empower_miviewer } from "./miviewer.mjs"
+    let containers = document.querySelectorAll('.miviewer-container')
+
+    containers.forEach(e => {
+        empower_miviewer(
+            // 将 `.miviewer-container` 容器中的子孙元素中的图片或视频元素加入到一个 miviewer 中
+            e,
+            // 第二个 JSON 对象是可选的
+            {
+                // 如果是视频元素就过滤
+                filter: e => {
+                    if (e.className === 'ignore') {
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+            }
+        )
+    })
+</script> -->
+
+<script type="module">
+    import { recreate_miviewer_container } from "./miviewer.mjs"
+    let containers = document.querySelectorAll('.miviewer-container')
+    containers.forEach(container => {
+        Array.from(container.children).forEach(e => {
+            e.addEventListener('click', event => {
+                recreate_miviewer_container(event.target)
+            })
+        })
+    })
+</script>
+
+</html>

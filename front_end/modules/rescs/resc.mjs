@@ -24,6 +24,7 @@ function create_resc_img(src) {
     resc.classList.add('resc')
 
     let rsec_img = document.createElement('img')
+    rsec_img.classList.add('miviewer-item')
     resc.appendChild(rsec_img)
     rsec_img.src = src
     rsec_img.draggable = 'false'
@@ -33,8 +34,8 @@ function create_resc_img(src) {
 function create_resc_video(src) {
     let resc = document.createElement('div')
     resc.classList.add('resc')
-    resc.classList.add('mivd')
     let resc_video = document.createElement('video')
+    resc_video.classList.add('miviewer-item')
     resc.appendChild(resc_video)
 
     // 添加视频片段
