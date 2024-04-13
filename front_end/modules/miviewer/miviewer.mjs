@@ -118,7 +118,6 @@ angle_right.addEventListener('click', event => {
 
 /* 用于显示浏览进度 */
 function set_browsing_progress(curr_progress, totality) {
-    console.log(browsing_progress)
     browsing_progress.textContent = curr_progress.toString() + '/' + totality.toString()
 }
 function browsing_progress_increased_by_1() {

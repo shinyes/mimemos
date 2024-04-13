@@ -49,5 +49,6 @@ function create_resc_video(src) {
 function attach_del_a_resc_listener(resc, del_resc_btn) {
     del_resc_btn.addEventListener('click', e => {
         resc.remove()
+        e.stopPropagation()
     })
 }

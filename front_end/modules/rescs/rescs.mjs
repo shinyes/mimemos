@@ -9,6 +9,7 @@ const curr_script_dir_path = curr_script_path.substring(0, curr_script_path.last
 
 export function create_rescs(file_input) {
     let rescs = document.createElement('div')
+    rescs.style.display = 'none' // 先隐藏
     rescs.classList.add('rescs')
     rescs.classList.add('sortable-list')
 
@@ -33,6 +34,23 @@ export function create_rescs(file_input) {
     });
 
     listen_input_then_create(rescs, plus_resc, file_input)
+
+    var observer = new MutationObserver(function (mutationsList, observer) {
+        // 检查容器中是否有 resc 元素，没有就隐藏
+        if (rescs.childElementCount === 1) {
+            // 没有子元素，隐藏容器
+            rescs.style.display = 'none'
+        } else if (rescs.childElementCount > 1) {
+            // 有子元素，显示容器
+            rescs.style.display = 'grid'
+        }
+    });
+
+    // 配置观察器以监视子节点的添加和删除
+    var config = { childList: true };
+
+    // 将观察器绑定到容器元素，并开始观察
+    observer.observe(rescs, config);
 
     /* 为 rescs 施加 Sortable 效果 */
     new Sortable(rescs, {
@@ -79,4 +97,15 @@ function listen_input_then_create(rescs, plus_resc, file_input) {
         }
         file_input.value = ''
     });
+}
+
+/* 
+判断 rescs 中有没有元素，如果有则显示，否则不显示
+*/
+function check_rescs_content(event) {
+    if (event.target.children.length === 0) {
+        event.target.style.display = 'none'
+    } else {
+        event.target.style.display = 'block'
+    }
 }
