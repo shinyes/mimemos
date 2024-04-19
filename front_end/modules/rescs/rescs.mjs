@@ -35,6 +35,9 @@ export function create_rescs(file_input) {
 
     listen_input_then_create(rescs, plus_resc, file_input)
 
+    /* 
+    这段代码用于控制 rescs 块只有在其中有 resc 时才显示
+    */
     var observer = new MutationObserver(function (mutationsList, observer) {
         // 检查容器中是否有 resc 元素，没有就隐藏
         if (rescs.childElementCount === 1) {
@@ -88,10 +91,15 @@ function listen_input_then_create(rescs, plus_resc, file_input) {
                 const fileType = file.type.split('/')[0]; // 获取文件类型
                 let resc = create_resc(fileType, event2.target.result)
                 rescs.insertBefore(resc, plus_resc)
-                resc.addEventListener('click', e => {
-                    recreate_miviewer_container(resc.firstChild)
-                })
+
+                /* 只给 miviewer-item 添加点击就打开 miviewer 的监听器 */
+                if (resc.firstElementChild.classList.contains('miviewer-item')) {
+                    resc.addEventListener('click', e => {
+                        recreate_miviewer_container(resc.firstElementChild)
+                    })
+                }
             };
+
             // 开始读取文件
             reader.readAsDataURL(file);
         }

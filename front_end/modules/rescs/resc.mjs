@@ -9,6 +9,8 @@ export function create_resc(type, src) {
         resc = create_resc_img(src)
     } else if (type === 'video') {
         resc = create_resc_video(src)
+    } else {
+        resc = create_other_file_resc(src)
     }
 
     let del_resc_btn = document.createElement('img')
@@ -46,6 +48,16 @@ function create_resc_video(src) {
     return resc
 }
 
+function create_other_file_resc(src) {
+    let resc = document.createElement('div')
+    resc.classList.add('resc')
+    resc.setAttribute('data-src', src)
+    return resc
+}
+
+/* 
+绑定删除 resc元素的监听器
+*/
 function attach_del_a_resc_listener(resc, del_resc_btn) {
     del_resc_btn.addEventListener('click', e => {
         resc.remove()
