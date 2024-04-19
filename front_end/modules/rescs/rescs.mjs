@@ -106,14 +106,3 @@ function listen_input_then_create(rescs, plus_resc, file_input) {
         file_input.value = ''
     });
 }
-
-/* 
-判断 rescs 中有没有元素，如果有则显示，否则不显示
-*/
-function check_rescs_content(event) {
-    if (event.target.children.length === 0) {
-        event.target.style.display = 'none'
-    } else {
-        event.target.style.display = 'block'
-    }
-}
