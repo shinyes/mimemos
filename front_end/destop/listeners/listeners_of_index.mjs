@@ -68,7 +68,7 @@ document.addEventListener('click', function (event) {
 });
 
 
-// 监听点击上传memo的附属文件时，浏览器请求上传文件，并显示 rescs 块
+// 监听点击上传memo的附属文件时，浏览器请求上传文件
 let input_file = document.querySelector('input#input-file')
 let upload_resc = document.querySelector('#upload-resc')
 let is_rescs_exists;

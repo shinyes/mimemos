@@ -1,7 +1,6 @@
 import { create_resc } from "./resc.mjs"
 import Sortable from "../sortable.complete.esm.js"
 import { recreate_miviewer_container } from "../miviewer/miviewer.mjs"
-import { query_ancestor_by_class_name } from "../base_modules/query_ancestor.js"
 
 const currentScriptUrl = import.meta.url;
 const curr_script_path = new URL(currentScriptUrl).pathname;
