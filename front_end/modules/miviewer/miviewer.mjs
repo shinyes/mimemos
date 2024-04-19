@@ -40,7 +40,7 @@ export async function create_miviewer_container(conainter, options = { filter: n
 function pop_up_miviewer_container(target, arr_of_miviewer_item, options = {}) {
     arr_of_miviewer_item.forEach(item => {
         // 复制一份新的节点，方便展示
-        let t = item.cloneNode()
+        let t = item.cloneNode(true)
         // 点击的那个图片/视频显示，其他的不显示
         if (item !== target) {
             t.style.display = 'none'
