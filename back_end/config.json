@@ -1,5 +1,4 @@
 {
-    "host": "172.0.0.1:5050",
     "main_data_path": "back_end/db/main_data.sl3",
     "database_file_path": "back_end/db"
 }

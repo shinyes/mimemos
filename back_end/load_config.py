@@ -8,8 +8,9 @@ with open(os.path.join(current_dir, 'config.json')) as f:
 
 # 部署的目录
 root_dir = os.path.join(current_dir, '..')
-host = config['host']
+# 主数据库的路径
 main_data_path = os.path.join(current_dir, '..', config['main_data_path'])
+# 数据库目录
 database_file_path = os.path.join(current_dir, '..', config['database_file_path'])
 
 # 避免外部访问
