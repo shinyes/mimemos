@@ -32,12 +32,12 @@ export function create_rescs(file_input) {
         file_input.click();
     });
 
-    listen_input_then_create(rescs, plus_resc, file_input)
+    listen_input_then_create_resc(rescs, plus_resc, file_input)
 
     /* 
     这段代码用于控制 rescs 块只有在其中有 resc 时才显示
     */
-    var observer = new MutationObserver(function (mutationsList, observer) {
+    let observer = new MutationObserver(function (mutationsList, observer) {
         // 检查容器中是否有 resc 元素，没有就隐藏
         if (rescs.childElementCount === 1) {
             // 没有子元素，隐藏容器
@@ -49,7 +49,7 @@ export function create_rescs(file_input) {
     });
 
     // 配置观察器以监视子节点的添加和删除
-    var config = { childList: true };
+    let config = { childList: true };
 
     // 将观察器绑定到容器元素，并开始观察
     observer.observe(rescs, config);
@@ -77,7 +77,7 @@ export function create_rescs(file_input) {
 /* 
 上传文件后创建 resc，并返回之
 */
-function listen_input_then_create(rescs, plus_resc, file_input) {
+function listen_input_then_create_resc(rescs, plus_resc, file_input) {
     file_input.addEventListener('change', function (event) {
         const files = event.target.files
 
@@ -105,3 +105,7 @@ function listen_input_then_create(rescs, plus_resc, file_input) {
         file_input.value = ''
     });
 }
+
+// function get_files_from_rescs(rescs) {
+
+// }
